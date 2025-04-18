@@ -1,0 +1,358 @@
+/* --- 기존 CSS 코드 시작 --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 25px 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3 {
+    color: #0056b3;
+    margin-top: 0;
+    margin-bottom: 0.75em;
+    font-weight: 600;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+h2 {
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.4em;
+    font-size: 1.5em;
+    margin-top: 1.5em;
+}
+
+h3 {
+    font-size: 1.2em;
+    color: #004085;
+}
+
+.description {
+    text-align: center;
+    color: #555;
+    margin-bottom: 35px;
+}
+
+.upload-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+/* input[type=file] 은 숨김 */
+#woundImage {
+    display: none;
+}
+
+.upload-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.upload-btn:hover {
+    background-color: #0056b3;
+}
+
+.file-name {
+    flex-grow: 1;
+    font-style: italic;
+    color: #555;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-width: 150px;
+}
+
+.analyze-btn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.analyze-btn:hover {
+    background-color: #1e7e34;
+}
+
+.analyze-btn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.preview-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ID 선택자 수정 */
+#imagePreview {
+    display: block;
+    max-width: 100%;
+    max-height: 400px;
+    margin: 15px auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    object-fit: contain;
+}
+
+.placeholder {
+    color: #888;
+    padding: 50px 0;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    margin-top: 15px;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px 0;
+    color: #0056b3;
+    font-size: 1.1em;
+}
+
+.spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: #007bff;
+    margin: 0 auto 15px auto;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.results-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.result-box {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-left: 5px solid #007bff;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+
+.result-box h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+.result-box h3 small {
+    font-size: 0.7em;
+    color: #555;
+    font-weight: normal;
+    display: block; /* 줄바꿈 */
+    margin-top: 4px;
+}
+
+/* ID 선택자 추가 */
+#analysisResult,
+#bandSuggestion,
+#wagnerGradeResult {
+    color: #333;
+    white-space: pre-wrap; /* 줄바꿈 및 공백 유지 */
+    font-size: 0.95em;
+}
+
+/* 클래스 선택자 수정 */
+.necrosis-visual-box {
+    border-left-color: #6c757d; /* Darker border for tissue section */
+}
+.necrosis-visual-box h3 {
+    color: #495057; /* Darker heading */
+}
+
+/* 클래스 선택자 수정 */
+.necrosis-scale-container {
+    padding: 15px 5px;
+}
+
+.scale-bar {
+    display: flex;
+    width: 100%;
+    height: 25px;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #e9ecef; /* Light grey background */
+    margin-bottom: 8px;
+}
+
+.scale-segment {
+    flex-grow: 1;
+    height: 100%;
+    opacity: 0.4; /* Inactive segments are faded */
+    transition: all 0.3s ease;
+    position: relative; /* For potential future tooltips */
+    cursor: help; /* Indicate more info available on hover */
+}
+
+/* --- 수정된 단계 클래스 및 색상 --- */
+.scale-segment.no_ulcer             { background-color: #17a2b8; } /* Info color for no ulcer */
+.scale-segment.healthy_granulation { background-color: #28a745; } /* Green for healthy/granulating */
+.scale-segment.slough               { background-color: #ffc107; } /* Yellow for slough */
+.scale-segment.eschar               { background-color: #6c757d; } /* Grey for eschar */
+.scale-segment.gangrene             { background-color: #343a40; } /* Black for gangrene */
+.scale-segment.unknown              { background-color: #f8f9fa; border-left: 1px solid #ccc; } /* Light background for unknown */
+
+
+/* Active state highlights the assessed stage */
+.scale-segment.active {
+    opacity: 1;
+    transform: scaleY(1.1); /* Slightly raise the active segment */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    z-index: 1; /* Ensure active segment is on top */
+    border-right: 1px solid #fff; /* White borders for definition */
+    border-left: 1px solid #fff;
+}
+
+.scale-labels {
+    display: flex;
+    justify-content: space-between; /* Adjust spacing */
+    font-size: 0.8em;
+    color: #555;
+    padding: 0 2%; /* Add padding */
+}
+/* --- 레이블 정렬 및 너비 조정 --- */
+.scale-labels span {
+    text-align: center;
+    flex: 1; /* Distribute space evenly */
+}
+.scale-labels span:first-child { text-align: left; }
+.scale-labels span:last-child { text-align: right; }
+
+
+.stage-text {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+    color: #333;
+    font-size: 1.0em; /* Slightly larger text */
+}
+
+.wagner-box {
+    background-color: #e2f0fb; /* Lighter blue background */
+    border-left-color: #007bff; /* Match general theme */
+}
+.wagner-box h3 {
+    color: #0056b3; /* Match general theme */
+}
+
+/* ID 선택자 수정 */
+#wagnerGradeResult {
+    font-size: 0.95em; /* Match other results */
+    color: #333;
+    margin-bottom: 10px; /* Add space before bandage suggestion */
+}
+#bandSuggestion {
+    font-size: 0.9em; /* Slightly smaller for suggestion details */
+    color: #555;
+}
+
+
+.disclaimer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff3cd; /* Warning yellow */
+    border: 1px solid #ffeeba;
+    border-left: 5px solid #ffc107; /* Warning color border */
+    color: #856404; /* Dark yellow text */
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.disclaimer strong {
+    color: #856404; /* Match text color */
+    font-weight: 600;
+}
+
+/* --- 반응형 디자인 --- */
+@media (max-width: 600px) {
+    .container {
+        margin: 15px;
+        padding: 15px 20px;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+    h2 {
+        font-size: 1.3em;
+    }
+    h3 {
+        font-size: 1.1em;
+    }
+
+    .upload-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .file-name {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .upload-btn, .analyze-btn {
+        width: 100%;
+        box-sizing: border-box; /* Include padding in width */
+    }
+
+    .result-box {
+        padding: 15px 20px;
+    }
+
+    .scale-labels {
+        font-size: 0.7em; /* Smaller labels on small screens */
+        padding: 0 1%;
+    }
+
+    .stage-text {
+        font-size: 0.9em;
+    }
+}
+/* --- 기존 CSS 코드 끝 --- */
+

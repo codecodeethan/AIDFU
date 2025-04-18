@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mangicare AI Solution</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetic Foot Ulcer Wound Detection</h1>
+        <p class="description">Upload a picture of your wound to receive an AI-driven visual assessment.</p>
+
+        <div class="upload-section">
+            <input type="file" id="woundImage" accept="image/*" style="display: none;">
+            <label for="woundImage" class="upload-btn">Select Image</label>
+            <span id="fileName" class="file-name">No file chosen</span>
+            <button id="analyzeBtn" class="analyze-btn" disabled>Analyze Start</button>
+        </div>
+
+        <div class="preview-section">
+            <h2>Preview</h2>
+            <img id="imagePreview" src="#" alt="Selected Wound Image" style="display: none;">
+            <p id="previewPlaceholder" class="placeholder">Please select a wound Image</p>
+        </div>
+
+        <div id="loadingIndicator" class="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Please wait.. AI is processing your image</p>
+        </div>
+
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <h2>Analysis Result</h2>
+
+            <div class="result-box">
+                <h3>Summary</h3>
+                <p id="analysisResult">-</p>
+            </div>
+
+            <div class="result-box necrosis-visual-box">
+                <h3>Necrosis/Tissue Stage Visualization</h3>
+                <div class="necrosis-scale-container"> 
+                        <div class="scale-segment no_ulcer" data-stage="no_ulcer" title="No Ulcer / Skin Intact"></div>
+                        <div class="scale-segment healthy_granulation" data-stage="healthy_granulation" title="Healthy / Granulating Tissue (Red/Pink)"></div>
+                        <div class="scale-segment slough" data-stage="slough" title="Slough Present (Yellow/Tan/White)"></div>
+                        <div class="scale-segment eschar" data-stage="eschar" title="Eschar Present (Black/Brown)"></div>
+                        <div class="scale-segment gangrene" data-stage="gangrene" title="Gangrene Present (Black, Necrotic)"></div>
+                        <div class="scale-segment unknown" data-stage="unknown" title="Unknown / Cannot Determine"></div>
+                    </div>
+                    <div class="scale-labels">
+                        <span>Healthy/Granulating</span>
+                        <span>Slough</span>
+                        <span>Eschar</span>
+                        <span>Gangrene</span>
+                    </div>
+                    <p id="necrosisStageText" class="stage-text"></p>
+                </div>
+            </div>
+
+            <div class="result-box wagner-box">
+                <h3>Possible DFU Stage (Estimated) & Bandage Recommendation</h3>
+                <p id="wagnerGradeResult">-</p>
+                <hr style="margin: 15px 0; border-top: 1px dashed #ccc;">
+                <p><strong>Bandage Suggestion (based on 3x3 inch, 3mm thickness):</strong></p>
+                <p id="bandSuggestion">-</p>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <p><strong>⚠️ Warning:</strong> Following AI analysis results and recommendations provided are for informational purposes only and should never be considered a substitute for a professional medical diagnosis, prescription, or treatment plan. Accuracy of the result may depend on the quality, angle and lighting of the image. All decisions regarding wound care should be made in consultation with a physician or qualified healthcare professional.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
