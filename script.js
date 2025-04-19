@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // 백엔드 주소 확인 필요
-            const response = await fetch('http://127.0.0.1:5500/analyze', {
+            const response = await fetch('https://ethansung416-6e02c3a6-ccc7-45dd-a0d9-6b2c11815501.socketxp.com/analyze', {
                 method: 'POST',
                 body: formData,
             });
